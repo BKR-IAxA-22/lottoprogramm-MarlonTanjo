@@ -30,35 +30,38 @@ namespace Lottozahlen
 
         private void genNumbers_Click(object sender, EventArgs e)
         {
-            //Hier werden 6 Zahlen generiert.
-            for (int i = 0; i < 6; i++)
+            if (tip1.Text != "" && tip2.Text != "" && tip3.Text != "" && tip4.Text != "" && tip5.Text != "" && tip6.Text != "")
             {
-                int x = generator.Next(1,49);
-                //Wenn es die Zahl schon gibt, so wird diese nicht gespeichert und das Random wiederholt.
-                if (genLottoNumbers.Contains(x))
+                //Hier werden 6 Zahlen generiert.
+                for (int i = 0; i < 6; i++)
                 {
-                    i--;
+                    int x = generator.Next(1, 49);
+                    //Wenn es die Zahl schon gibt, so wird diese nicht gespeichert und das Random wiederholt.
+                    if (genLottoNumbers.Contains(x))
+                    {
+                        i--;
+                    }
+                    else
+                    {
+                        //Hier werden die Zahlen gespeichert
+                        genLottoNumbers[i] = x;
+                    }
                 }
-                else
-                {
-                    //Hier werden die Zahlen gespeichert
-                    genLottoNumbers[i] = x;
-                }
+                //Hier werden die Zahlen ausgegeben.
+                lottoNumber1.Text = Convert.ToString(genLottoNumbers[0]);
+                lottoNumber2.Text = Convert.ToString(genLottoNumbers[1]);
+                lottoNumber3.Text = Convert.ToString(genLottoNumbers[2]);
+                lottoNumber4.Text = Convert.ToString(genLottoNumbers[3]);
+                lottoNumber5.Text = Convert.ToString(genLottoNumbers[4]);
+                lottoNumber6.Text = Convert.ToString(genLottoNumbers[5]);
+                //Hier werden die Eingaben überprüft.
+                lottoTip[0] = Convert.ToInt32(tip1.Text);
+                lottoTip[1] = Convert.ToInt32(tip2.Text);
+                lottoTip[2] = Convert.ToInt32(tip3.Text);
+                lottoTip[3] = Convert.ToInt32(tip4.Text);
+                lottoTip[4] = Convert.ToInt32(tip5.Text);
+                lottoTip[5] = Convert.ToInt32(tip6.Text);
             }
-            //Hier werden die Zahlen ausgegeben.
-            lottoNumber1.Text = Convert.ToString(genLottoNumbers[0]);
-            lottoNumber2.Text = Convert.ToString(genLottoNumbers[1]);
-            lottoNumber3.Text = Convert.ToString(genLottoNumbers[2]);
-            lottoNumber4.Text = Convert.ToString(genLottoNumbers[3]);
-            lottoNumber5.Text = Convert.ToString(genLottoNumbers[4]);
-            lottoNumber6.Text = Convert.ToString(genLottoNumbers[5]);
-            //Hier werden die Eingaben überprüft.
-            lottoTip[0] = Convert.ToInt32(tip1.Text);
-            lottoTip[1] = Convert.ToInt32(tip2.Text);
-            lottoTip[2] = Convert.ToInt32(tip3.Text);
-            lottoTip[3] = Convert.ToInt32(tip4.Text);
-            lottoTip[4] = Convert.ToInt32(tip5.Text);
-            lottoTip[5] = Convert.ToInt32(tip6.Text);
         }
 
         private void tip1_TextChanged(object sender, EventArgs e)
